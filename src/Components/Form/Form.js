@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import operations from '../../redux/contacts/contacts-operations';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getStateContacts } from '../../redux/contacts/contacts-selectors';
 
 const Form = ({ submitMethod }) => {
   Form.propTypes = {
     submitMethod: PropTypes.func,
   };
-  const value = useSelector(state => state);
+  const value = useSelector(getStateContacts);
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -38,11 +39,7 @@ const Form = ({ submitMethod }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (
-      value.contacts.find(
-        state => state.name.toLowerCase() === name.toLowerCase(),
-      )
-    ) {
+    if (value.find(state => state.name.toLowerCase() === name.toLowerCase())) {
       resetState();
       toast.error('Hey, this name always here!');
       return;
