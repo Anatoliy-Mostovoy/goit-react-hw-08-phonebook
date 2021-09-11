@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operation';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Register = () => {
   const dispatch = useDispatch();

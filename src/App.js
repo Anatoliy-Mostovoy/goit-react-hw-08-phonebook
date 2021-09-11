@@ -13,7 +13,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkUser } from './redux/auth/auth-operation';
 import { getToken } from './redux/auth/auth-selector';
-
+import { PablicRoute } from './Components/Route/pablic-route';
+import { PrivateRoute } from './Components/Route/private-route';
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
@@ -31,7 +32,7 @@ export const App = () => {
         <Route exact path="/">
           Home
         </Route>
-        <Route exact path="/contacts">
+        <PrivateRoute exact path="/contacts" altPath="/login">
           <>
             <h1 className={s.Title}>PhoneBook</h1>
             <Form />
@@ -39,14 +40,14 @@ export const App = () => {
             <Filter />
             <Contacts />
           </>
-        </Route>
+        </PrivateRoute>
 
-        <Route exact path="/login">
+        <PablicRoute path="/login" altPath="/contacts" exact>
           <Login />
-        </Route>
-        <Route exact path="/register">
+        </PablicRoute>
+        <PablicRoute path="/register" altPath="/contacts" exact>
           <Register />
-        </Route>
+        </PablicRoute>
       </Switch>
 
       <ToastContainer />

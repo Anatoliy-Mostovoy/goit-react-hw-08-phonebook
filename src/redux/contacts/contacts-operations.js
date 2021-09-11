@@ -1,7 +1,7 @@
 import axios from 'axios';
 import actions from './contacts-actions';
 
-axios.defaults.baseURL = 'http://localhost:9999';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const fetchContact = () => async dispatch => {
   dispatch(actions.fetchContactRequest());
@@ -23,7 +23,7 @@ const fetchContact = () => async dispatch => {
 };
 
 const addContacts = newContact => async dispatch => {
-  dispatch(actions.addContactRequest('Mother Fucker'));
+  dispatch(actions.addContactRequest(''));
   try {
     const response = await axios.post('/contacts', newContact);
     dispatch(actions.addContactSuccess(response.data));
