@@ -9,7 +9,8 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-
+import authSlice from './auth/auth-slice';
+console.log(authSlice);
 // const myMiddleware = store => next => action => {
 //   console.log('My middleware');
 //   console.log(action);
@@ -17,6 +18,7 @@ import {
 // };
 
 const rootReducer = combineReducers({
+  auth: authSlice,
   contacts: componentReducer.contactsReducer,
   filter: componentReducer.filterReducer,
 });
