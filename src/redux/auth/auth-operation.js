@@ -28,3 +28,13 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   await axios.post('/users/logout');
   tokenState.cleanToken();
 });
+
+export const checkUser = createAsyncThunk(
+  'auth/checkUser',
+  async (_, thunkApi) => {
+    const token = thunkApi.getState().auth.token;
+    tokenState.setToken(token);
+    const { data } = await axios.get('/users/current');
+    return data;
+  },
+);

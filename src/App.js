@@ -9,9 +9,21 @@ import Header from './Components/Header/Header';
 import { Route, Switch } from 'react-router';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkUser } from './redux/auth/auth-operation';
+import { getToken } from './redux/auth/auth-selector';
 
-console.log(Register);
 export const App = () => {
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  useEffect(() => {
+    if (token === null) {
+      return;
+    }
+    dispatch(checkUser());
+  }, [dispatch, token]);
+
   return (
     <>
       <Header />

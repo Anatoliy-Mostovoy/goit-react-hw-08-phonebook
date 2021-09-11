@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import componentReducer from './contacts/contacts-reducer';
+import storage from 'redux-persist/lib/storage';
 import {
+  persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -10,15 +13,20 @@ import {
   REGISTER,
 } from 'redux-persist';
 import authSlice from './auth/auth-slice';
-console.log(authSlice);
+
 // const myMiddleware = store => next => action => {
 //   console.log('My middleware');
 //   console.log(action);
 //   console.log(store.getState());
 // };
+const persistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 const rootReducer = combineReducers({
-  auth: authSlice,
+  auth: persistReducer(persistConfig, authSlice),
   contacts: componentReducer.contactsReducer,
   filter: componentReducer.filterReducer,
 });
@@ -36,8 +44,13 @@ const store = configureStore({
   ],
 });
 
+let persistor = persistStore(store);
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default store;
+export default { store, persistor };
+
+// eslint-disable-next-line import/no-anonymous-default-export
+// export default store;
 
 // import { createStore, applyMiddleware, combineReducers } from 'redux';
 // import { composeWithDevTools } from 'redux-devtools-extension';
