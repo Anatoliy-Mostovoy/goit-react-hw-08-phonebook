@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operation';
+import s from './Login.module.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Login = () => {
@@ -17,24 +18,33 @@ const Login = () => {
   };
 
   return (
-    <Form onSubmit={onSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+    <div className={s.Container}>
+      <Form onSubmit={onSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label className={s.Label}>Email address</Form.Label>
+          <Form.Control
+            className={s.Input}
+            type="email"
+            name="email"
+            placeholder="Enter email"
+          />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name="password" placeholder="Password" />
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label className={s.Label}>Password</Form.Label>
+          <Form.Control
+            className={s.Input}
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Button className={s.Button} variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
   );
 };
 

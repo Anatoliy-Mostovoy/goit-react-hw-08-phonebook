@@ -30,7 +30,7 @@ export const App = () => {
       <Header />
       <Switch>
         <Route exact path="/">
-          Home
+          Hi! Please, log in or register
         </Route>
         <PrivateRoute exact path="/contacts" altPath="/login">
           <>

@@ -3,7 +3,8 @@ import Form from 'react-bootstrap/Form';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operation';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import s from './Register.module.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -18,29 +19,43 @@ const Register = () => {
   };
 
   return (
-    <Form onSubmit={onSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control type="text" name="name" placeholder="Enter name" />
-        <Form.Text className="text-muted"></Form.Text>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+    <div className={s.Container}>
+      <Form onSubmit={onSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label className={s.Label}>Name</Form.Label>
+          <Form.Control
+            className={s.Input}
+            type="text"
+            name="name"
+            placeholder="Enter name"
+          />
+          <Form.Text className="text-muted"></Form.Text>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label className={s.Label}>Email address</Form.Label>
+          <Form.Control
+            className={s.Input}
+            type="email"
+            name="email"
+            placeholder="Enter email"
+          />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name="password" placeholder="Password" />
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label className={s.Label}>Password</Form.Label>
+          <Form.Control
+            className={s.Input}
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Button className={s.Button} variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
   );
 };
 

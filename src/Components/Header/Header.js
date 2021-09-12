@@ -3,24 +3,50 @@ import { NavLink } from 'react-router-dom';
 import { User } from '../User/User';
 import { getLoggedIn } from '../../redux/auth/auth-selector';
 import { useSelector } from 'react-redux';
-
+import s from './Header.module.css';
 const Header = () => {
   const loggedIn = useSelector(getLoggedIn);
   return (
-    <header>
+    <header className={s.Container}>
       <nav>
-        <NavLink to="/" exact>
-          Home
-        </NavLink>
-        <NavLink to="/contacts" exact>
-          Contacts
-        </NavLink>
-        <NavLink to="/login" exact>
-          Login
-        </NavLink>
-        <NavLink to="/register" exact>
-          Register
-        </NavLink>
+        <div className={s.MainNav}>
+          <div className={s.Home}>
+            <NavLink
+              className={s.Link}
+              activeClassName={s.LinkActive}
+              to="/"
+              exact
+            >
+              Home
+            </NavLink>
+            <NavLink
+              className={s.Link}
+              activeClassName={s.LinkActive}
+              to="/contacts"
+              exact
+            >
+              Contacts
+            </NavLink>
+          </div>
+          <div>
+            <NavLink
+              className={s.Link}
+              activeClassName={s.LinkActive}
+              to="/login"
+              exact
+            >
+              Login
+            </NavLink>
+            <NavLink
+              className={s.Link}
+              activeClassName={s.LinkActive}
+              to="/register"
+              exact
+            >
+              Register
+            </NavLink>
+          </div>
+        </div>
 
         {loggedIn && <User />}
       </nav>

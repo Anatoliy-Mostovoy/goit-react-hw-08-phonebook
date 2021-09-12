@@ -1,0 +1,29 @@
+.Container {
+  width: 400px;
+  text-align: center;
+  padding: 20px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px grey;
+  display: flex;
+  justify-content: center;
+}
+
+.Link {
+  color: black;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.LinkActive {
+  color: orange;
+}
+
+.MainNav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Home {
+  margin-right: 200px;
+}
