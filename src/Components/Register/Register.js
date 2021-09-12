@@ -4,6 +4,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operation';
 import s from './Register.module.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Register = () => {
@@ -15,6 +17,15 @@ const Register = () => {
       email: event.target.email.value,
       password: event.target.password.value,
     };
+
+    if (
+      userInfo.name === '' ||
+      userInfo.email === '' ||
+      userInfo.password === ''
+    ) {
+      toast.error('Input ALL your data!');
+      return;
+    }
     dispatch(register(userInfo));
   };
 

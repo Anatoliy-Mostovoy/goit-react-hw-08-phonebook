@@ -1,0 +1,11 @@
+.Container {
+  margin-top: 20px;
+  width: 400px;
+  text-align: center;
+  padding: 20px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px grey;
+  color: brown;
+  text-shadow: brown;
+}

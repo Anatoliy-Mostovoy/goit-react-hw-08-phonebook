@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operation';
 import s from './Login.module.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Login = () => {
@@ -14,6 +16,10 @@ const Login = () => {
       email: event.target.email.value,
       password: event.target.password.value,
     };
+    if (userInfo.email === '' || userInfo.password === '') {
+      toast.error('Input your data!');
+      return;
+    }
     dispatch(login(userInfo));
   };
 

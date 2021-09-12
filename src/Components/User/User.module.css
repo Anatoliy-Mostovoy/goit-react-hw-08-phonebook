@@ -4,3 +4,10 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.Text {
+  font-size: larger;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: brown;
+}

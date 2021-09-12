@@ -15,6 +15,8 @@ import { checkUser } from './redux/auth/auth-operation';
 import { getToken } from './redux/auth/auth-selector';
 import { PablicRoute } from './Components/Route/pablic-route';
 import { PrivateRoute } from './Components/Route/private-route';
+import { HomePage } from '../src/Components/HomePage/HomePage';
+
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
@@ -30,7 +32,7 @@ export const App = () => {
       <Header />
       <Switch>
         <Route exact path="/">
-          Hi! Please, log in or register
+          <HomePage />
         </Route>
         <PrivateRoute exact path="/contacts" altPath="/login">
           <>

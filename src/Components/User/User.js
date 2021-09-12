@@ -12,7 +12,7 @@ export const User = () => {
 
   return (
     <>
-      <p> Welcome {user}</p>
+      <p className={s.Text}> Welcome, {user} ! </p>
       <button type="button" className={s.Button} onClick={onClick}>
         Exit
       </button>
