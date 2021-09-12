@@ -2,6 +2,7 @@
   "name": "goit-react-hw-08-phonebook",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Anatoliy-Mostovoy.github.io/goit-react-hw-08-phonebook",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -30,7 +31,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "predeploy": "npm run build",
-    "deploy": "netlify deploy -p",
+    "deploy": "gh-pages -d build",
     "server": "json-server --port 9999 --delay 300 --watch db.json"
   },
   "eslintConfig": {
