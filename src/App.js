@@ -20,6 +20,7 @@ import { HomePage } from '../src/Components/HomePage/HomePage';
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
+  console.log(token);
   useEffect(() => {
     if (token === null) {
       return;

@@ -4,6 +4,7 @@ import { User } from '../User/User';
 import { getLoggedIn } from '../../redux/auth/auth-selector';
 import { useSelector } from 'react-redux';
 import s from './Header.module.css';
+
 const Header = () => {
   const loggedIn = useSelector(getLoggedIn);
   return (
@@ -19,33 +20,37 @@ const Header = () => {
             >
               Home
             </NavLink>
-            <NavLink
-              className={s.Link}
-              activeClassName={s.LinkActive}
-              to="/contacts"
-              exact
-            >
-              Contacts
-            </NavLink>
+            {loggedIn && (
+              <NavLink
+                className={s.Link}
+                activeClassName={s.LinkActive}
+                to="/contacts"
+                exact
+              >
+                Contacts
+              </NavLink>
+            )}
           </div>
-          <div>
-            <NavLink
-              className={s.Link}
-              activeClassName={s.LinkActive}
-              to="/login"
-              exact
-            >
-              Login
-            </NavLink>
-            <NavLink
-              className={s.Link}
-              activeClassName={s.LinkActive}
-              to="/register"
-              exact
-            >
-              Register
-            </NavLink>
-          </div>
+          {!loggedIn && (
+            <div>
+              <NavLink
+                className={s.Link}
+                activeClassName={s.LinkActive}
+                to="/login"
+                exact
+              >
+                Login
+              </NavLink>
+              <NavLink
+                className={s.Link}
+                activeClassName={s.LinkActive}
+                to="/register"
+                exact
+              >
+                Register
+              </NavLink>
+            </div>
+          )}
         </div>
 
         {loggedIn && <User />}
